@@ -1,0 +1,26 @@
+.topics-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+.topic-card img {
+  border-radius: var(--radius);
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  margin-bottom: 14px;
+  filter: sepia(0.18) saturate(1.1);
+}
+.topic-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+.topic-card p {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+@media (min-width: 720px) {
+  .topics-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+}

@@ -1,0 +1,36 @@
+@media (min-width: 960px) {
+  .main-nav {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    padding: 0;
+    transform: none;
+    box-shadow: none;
+    transition: none;
+  }
+  .main-nav ul {
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+  .main-nav a {
+    padding: 0;
+    border-bottom: none;
+    font-size: 0.95rem;
+  }
+  .main-nav .nav-cta {
+    margin-top: 0;
+    padding: 10px 18px;
+  }
+  .burger {
+    display: none;
+  }
+  .nav-overlay {
+    display: none;
+  }
+
+  .hero-text h1 {
+    max-width: 16ch;
+  }
+}

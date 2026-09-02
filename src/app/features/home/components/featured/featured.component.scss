@@ -1,0 +1,39 @@
+/* =========================================================
+   4. FEATURED
+   ========================================================= */
+.featured {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.featured-media img {
+  border-radius: var(--radius);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  filter: sepia(0.18) saturate(1.1);
+}
+.featured-copy h2 {
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  line-height: 1.2;
+  margin: 6px 0 16px;
+}
+.featured-copy p {
+  color: var(--ink-soft);
+}
+.featured-copy .link-arrow {
+  margin-top: 18px;
+  display: inline-flex;
+}
+@media (min-width: 720px) {
+  .featured {
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+  }
+  .featured-media {
+    flex: 1.1;
+  }
+  .featured-copy {
+    flex: 1;
+  }
+}

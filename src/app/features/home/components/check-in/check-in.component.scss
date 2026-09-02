@@ -1,0 +1,29 @@
+/* =========================================================
+   6. CHECK-IN
+   ========================================================= */
+.check-in .section-title {
+  max-width: 28ch;
+}
+.check-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.check-item {
+  border-top: 2px solid var(--accent);
+  padding-top: 16px;
+}
+.check-q {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent-dark);
+  margin-bottom: 8px;
+}
+.check-text {
+  font-size: 1.05rem;
+}
+@media (min-width: 720px) {
+  .check-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

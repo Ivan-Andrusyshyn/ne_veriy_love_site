@@ -1,0 +1,94 @@
+<section class="hero" id="hero">
+  <div class="hero__text">
+    <p class="hero__kicker">блог про стосунки та психологію</p>
+
+    <h1 class="hero__title">
+      Не вірю тобі - це той голос, який інколи допомагає, а інколи турбує.
+    </h1>
+
+    <p class="hero__lead">
+      ne_veriy_tebe — тут про саморозвиток, психологію стосунків і практики, які
+      допомагають стати кращою версією себе.
+    </p>
+
+    <div class="hero__actions">
+      <a href="#статті" class="btn btn--primary">Читати блог</a>
+
+      <a
+        [href]="telegramLink"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn--telegram"
+      >
+        <svg
+          class="btn__icon"
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          aria-hidden="true"
+        >
+          <path
+            fill="currentColor"
+            d="M21.6 3.6 2.9 10.8c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5L18.8 6.9c.5-.3 1-.1.6.2l-8.6 7.8-.3 4.7c.4 0 .6-.2.9-.5l2.1-2 4.4 3.3c.8.5 1.4.2 1.6-.7l3-14.1c.3-1.2-.4-1.7-1.9-1z"
+          />
+        </svg>
+        Наш Telegram
+      </a>
+    </div>
+  </div>
+
+  <div
+    class="hero__slider"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    <p class="hero__slider-label">Сайти, які варті твоєї уваги</p>
+
+    <div class="hero__viewport">
+      <div
+        class="hero__track"
+        [style.transform]="'translateX(-' + activeIndex() * 100 + '%)'"
+      >
+        <div
+          class="hero__slide"
+          *ngFor="let card of cards(); trackBy: trackByCardId"
+        >
+          <app-resource-card [card]="card"></app-resource-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__controls" *ngIf="cards().length > 1">
+      <button
+        type="button"
+        class="hero__arrow"
+        (click)="prev()"
+        [disabled]="!canGoPrev()"
+        aria-label="Попередня картка"
+      >
+        ‹
+      </button>
+
+      <div class="hero__dots">
+        <button
+          *ngFor="let card of cards(); let i = index; trackBy: trackByCardId"
+          type="button"
+          class="hero__dot"
+          [class.is-active]="i === activeIndex()"
+          (click)="goTo(i)"
+          [attr.aria-label]="'Перейти до картки ' + (i + 1)"
+        ></button>
+      </div>
+
+      <button
+        type="button"
+        class="hero__arrow"
+        (click)="next()"
+        [disabled]="!canGoNext()"
+        aria-label="Наступна картка"
+      >
+        ›
+      </button>
+    </div>
+  </div>
+</section>

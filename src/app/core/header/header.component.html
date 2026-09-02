@@ -1,0 +1,59 @@
+<div
+  class="nav-overlay"
+  [class.is-visible]="isMenuOpen()"
+  (click)="closeMenu()"
+></div>
+
+<header
+  class="site-header"
+  [style.box-shadow]="
+    isScrolled() ? '0 4px 18px rgba(46, 33, 27, 0.08)' : 'none'
+  "
+>
+  <div class="header-inner">
+    <a routerLink="/" class="logo"> ne_veriy_<span>tebe</span> </a>
+
+    <nav class="main-nav" [class.is-open]="isMenuOpen()" id="mainNav">
+      <ul>
+        <li>
+          <a routerLink="/" fragment="про" (click)="closeMenu()">Про проєкт</a>
+        </li>
+        <li>
+          <a routerLink="/" fragment="теми" (click)="closeMenu()">Теми</a>
+        </li>
+        <li>
+          <a routerLink="/" fragment="статті" (click)="closeMenu()">Статті</a>
+        </li>
+        <li>
+          <a routerLink="/" fragment="подкаст" (click)="closeMenu()">Подкаст</a>
+        </li>
+        <li>
+          <a routerLink="/" fragment="faq" (click)="closeMenu()">Питання</a>
+        </li>
+        <li>
+          <a
+            routerLink="/"
+            fragment="контакти"
+            class="nav-cta"
+            (click)="closeMenu()"
+          >
+            Написати
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <button
+      class="burger"
+      type="button"
+      [attr.aria-label]="isMenuOpen() ? 'Закрити меню' : 'Відкрити меню'"
+      [attr.aria-expanded]="isMenuOpen()"
+      aria-controls="mainNav"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>

@@ -1,0 +1,201 @@
+.hero {
+  --bg: #faf1e6;
+  --ink: #2e211b;
+  --ink-soft: #5c4a3f;
+  --accent: #b5502f;
+  --accent-dark: #8f3c22;
+  --gold: #c79a46;
+  --radius: 4px;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body:
+    "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  display: block;
+  font-family: var(--font-body);
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 20px 56px;
+  max-width: 1180px;
+  margin: 0 auto;
+
+  /* ---------- Текстовий блок ---------- */
+  .hero__kicker {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--accent-dark);
+    margin: 0 0 14px;
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .hero__lead {
+    margin: 18px 0 0;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+
+  .hero__actions {
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .btn--primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn--primary:hover {
+    background: var(--accent-dark);
+  }
+
+  .btn--telegram {
+    background: transparent;
+    color: var(--ink);
+    border-color: rgba(46, 33, 27, 0.18);
+  }
+  .btn--telegram:hover {
+    border-color: var(--ink);
+    color: var(--accent-dark);
+  }
+
+  .btn__icon {
+    flex-shrink: 0;
+  }
+
+  .hero__slider {
+    width: 100%;
+  }
+
+  .hero__slider-label {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+
+  .hero__viewport {
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+
+  .hero__track {
+    display: flex;
+    transition: transform 0.35s ease;
+  }
+
+  .hero__slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: 4px;
+    box-sizing: border-box;
+  }
+
+  .hero__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 18px;
+  }
+
+  .hero__arrow {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(46, 33, 27, 0.18);
+    background: #fff;
+    color: var(--ink);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero__arrow:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .hero__arrow:not(:disabled):hover {
+    border-color: var(--accent);
+    color: var(--accent-dark);
+  }
+
+  .hero__dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  .hero__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(46, 33, 27, 0.22);
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .hero__dot.is-active {
+    background: var(--accent);
+    width: 20px;
+    border-radius: 4px;
+    transition: width 0.2s ease;
+  }
+}
+
+@media (min-width: 720px) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+    padding: 60px 32px 88px;
+  }
+
+  .hero__text {
+    flex: 1;
+  }
+
+  .hero__slider {
+    flex: 1;
+  }
+
+  .hero__title {
+    max-width: 16ch;
+  }
+}
+
+@media (min-width: 960px) {
+  .hero__slide {
+    flex: 0 0 92%;
+  }
+}
