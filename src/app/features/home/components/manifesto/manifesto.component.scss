@@ -1,34 +1,51 @@
-/* =========================================================
-   2. MANIFESTO
-   ========================================================= */
 .manifesto {
   background: var(--bg-alt);
   max-width: none;
-}
-.manifesto-grid {
-  max-width: var(--container);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.manifesto-copy p {
-  color: var(--ink-soft);
-  margin-top: 16px;
-}
-.manifesto-copy p:first-child {
-  margin-top: 0;
-}
-@media (min-width: 720px) {
   .manifesto-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 60px;
-    align-items: start;
+    max-width: var(--container);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
   }
-  .manifesto-grid .section-title {
-    position: sticky;
-    top: calc(var(--header-h) + 40px);
-    margin-bottom: 0;
+  .manifesto-copy p {
+    color: var(--ink-soft);
+    margin-top: 16px;
+  }
+  .manifesto-copy p:first-child {
+    margin-top: 0;
+  }
+  .wrapper {
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 350px;
+    border-radius: var(--radius);
+    display: flex;
+    justify-content: center;
+    @media (min-width: 720px) {
+    }
+  }
+  .wrapper .div-bg {
+    height: auto;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+
+    background: url("/assets/images/insta-name.jpg") no-repeat center center;
+    background-size: cover;
+    background-position: top;
+  }
+  @media (min-width: 720px) {
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .manifesto-grid .section-title {
+      position: sticky;
+      top: calc(var(--header-h) + 40px);
+      margin-bottom: 0;
+    }
   }
 }

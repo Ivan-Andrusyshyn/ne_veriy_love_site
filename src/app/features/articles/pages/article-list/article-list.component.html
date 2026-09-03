@@ -1,0 +1,29 @@
+<ng-container *ngIf="category() as cat; else notFound">
+  <div class="article-list">
+    <a routerLink="/articles" class="article-list__back">← Усі категорії</a>
+
+    <h2 class="article-list__title">{{ cat.title }}</h2>
+    <p class="article-list__desc">{{ cat.description }}</p>
+
+    <div class="article-list__items">
+      <a
+        *ngFor="let article of cat.articles"
+        class="article-item"
+        [routerLink]="[article.slug]"
+      >
+        <div class="article-item__media">
+          <img [src]="article.imageUrl" [alt]="article.title" loading="lazy" />
+        </div>
+        <div class="article-item__body">
+          <p class="article-item__date">{{ formatDate(article.date) }}</p>
+          <h3 class="article-item__title">{{ article.title }}</h3>
+          <p class="article-item__excerpt">{{ article.excerpt }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #notFound>
+  <p class="article-list__empty">Категорію не знайдено.</p>
+</ng-template>

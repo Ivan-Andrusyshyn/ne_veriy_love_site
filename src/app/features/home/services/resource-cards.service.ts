@@ -17,7 +17,7 @@ const INITIAL_CARDS: ResourceCard[] = [
     description:
       'Короткий інтерактивний курс про те, як сваритись так, щоб конфлікт зближував, а не руйнував довіру.',
     meta: '1 година',
-    imageUrl: 'https://picsum.photos/seed/nvt-conflict/480/360',
+    imageUrl: 'assets/images/conflict-site-1.png',
     link: 'https://ne-veriy-love-1.vercel.app/',
     linkLabel: 'Перейти до курсу',
   },
@@ -27,7 +27,7 @@ const INITIAL_CARDS: ResourceCard[] = [
     description:
       'Тести на тип прив’язаності, рівень тривожності у стосунках та готовність довіряти знову.',
     meta: '5–15 хв',
-    imageUrl: 'https://picsum.photos/seed/nvt-tests/480/360',
+    imageUrl: 'assets/images/tests-site-1.png',
     link: 'https://vidchuttia.com.ua/tests',
     linkLabel: 'Пройти тест',
   },

@@ -1,0 +1,20 @@
+<ng-container *ngIf="article() as art; else placeholder">
+  <article class="article">
+    <a [routerLink]="['/articles', category()?.slug]" class="article__back">
+      ← До статей категорії «{{ category()?.title }}»
+    </a>
+
+    <p class="article__date">{{ formatDate(art.date) }}</p>
+    <h2 class="article__title">{{ art.title }}</h2>
+
+    <div class="article__media">
+      <img [src]="art.imageUrl" [alt]="art.title" loading="lazy" />
+    </div>
+
+    <p class="article__content">{{ art.content }}</p>
+  </article>
+</ng-container>
+
+<ng-template #placeholder>
+  <p class="article__empty">Оберіть статтю зі списку, щоб прочитати її тут.</p>
+</ng-template>

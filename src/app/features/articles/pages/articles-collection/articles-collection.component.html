@@ -1,0 +1,23 @@
+<section class="articles-page">
+  <h1 class="articles-page__title">Статті</h1>
+
+  <div class="categories-grid">
+    <a
+      *ngFor="let category of categories()"
+      class="category-card"
+      [routerLink]="[category.slug]"
+      routerLinkActive="is-active"
+    >
+      <div class="category-card__media">
+        <img [src]="category.imageUrl" [alt]="category.title" loading="lazy" />
+      </div>
+      <h3 class="category-card__title">{{ category.title }}</h3>
+      <p class="category-card__desc">{{ category.description }}</p>
+    </a>
+  </div>
+
+  <!-- Сюди рендериться список статей вибраної категорії або сама стаття -->
+  <div class="articles-page__outlet">
+    <router-outlet></router-outlet>
+  </div>
+</section>

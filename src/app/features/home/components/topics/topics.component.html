@@ -1,59 +1,15 @@
 <section class="block topics" id="теми">
-  <h2 class="section-title">Про що ми пишемо</h2>
+  <h2 class="section-title">Статті</h2>
+
   <div class="topics-grid">
-    <article class="topic-card">
-      <img
-        src="https://picsum.photos/seed/nvt-trust/500/400"
-        alt="Символ довіри — переплетені руки"
-        loading="lazy"
-      />
-      <h3>Довіра і зрада</h3>
-      <p>Як відрізнити тривожність від інтуїції, коли щось справді не так.</p>
-    </article>
-    <article class="topic-card">
-      <img
-        src="https://picsum.photos/seed/nvt-attach/500/400"
-        alt="Пара обіймається на світанку"
-        loading="lazy"
-      />
-      <h3>Тип прив'язаності</h3>
-      <p>Тривожний, уникаючий, надійний — і як це впливає на кожну сварку.</p>
-    </article>
-    <article class="topic-card">
-      <img
-        src="https://picsum.photos/seed/nvt-bound/500/400"
-        alt="Відкрите вікно з теплим світлом"
-        loading="lazy"
-      />
-      <h3>Особисті межі</h3>
-      <p>Чому «я так більше не можу» часто означає «я не вмію просити».</p>
-    </article>
-    <article class="topic-card">
-      <img
-        src="https://picsum.photos/seed/nvt-comm/500/400"
-        alt="Двоє розмовляють за кавою"
-        loading="lazy"
-      />
-      <h3>Комунікація</h3>
-      <p>Розмови, які рятують стосунки, і ті, що їх повільно вбивають.</p>
-    </article>
-    <article class="topic-card">
-      <img
-        src="https://picsum.photos/seed/nvt-self/500/400"
-        alt="Людина дивиться у вікно замислено"
-        loading="lazy"
-      />
-      <h3>Самооцінка</h3>
-      <p>Чому люди із заниженою самооцінкою обирають нестабільних партнерів.</p>
-    </article>
-    <article class="topic-card">
-      <img
-        src="https://picsum.photos/seed/nvt-end/500/400"
-        alt="Дорога вдалину в теплих тонах"
-        loading="lazy"
-      />
-      <h3>Завершення стосунків</h3>
-      <p>Як розійтись, не поховавши здатність вірити комусь знову.</p>
-    </article>
+    @for (topic of topics; track topic.title) {
+      <article class="topic-card" [routerLink]="['/articles', topic.slug]">
+        <img [src]="topic.image" [alt]="topic.alt" loading="lazy" />
+
+        <h3>{{ topic.title }}</h3>
+
+        <p>{{ topic.description }}</p>
+      </article>
+    }
   </div>
 </section>
