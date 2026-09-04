@@ -1,0 +1,13 @@
+<button
+  type="button"
+  class="btn-to-top"
+  [class.is-visible]="isVisible()"
+  [attr.aria-hidden]="!isVisible()"
+  [tabindex]="isVisible() ? 0 : -1"
+  aria-label="Прокрутити сторінку вгору"
+  (click)="scrollToTop()"
+>
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+    <path d="M12 5 5 12h4v7h6v-7h4l-7-7Z" fill="currentColor" />
+  </svg>
+</button>
