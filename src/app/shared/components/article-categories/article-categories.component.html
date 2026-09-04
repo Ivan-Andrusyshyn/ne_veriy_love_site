@@ -1,0 +1,11 @@
+<div class="categories-grid">
+  @for (category of categories(); track $index) {
+    <a [routerLink]="[category.slug]" routerLinkActive="is-active">
+      <div class="category-card__media">
+        <img [src]="category.imageUrl" [alt]="category.title" loading="lazy" />
+      </div>
+      <h3 class="category-card__title">{{ category.title }}</h3>
+      <p class="category-card__desc">{{ category.description }}</p>
+    </a>
+  }
+</div>

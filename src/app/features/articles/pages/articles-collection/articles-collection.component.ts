@@ -1,14 +1,14 @@
 import { Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
-import { NgIf, NgFor } from '@angular/common';
 
 // ========================
-import { ArticlesService } from '../../services/articles.service';
+import { ArticleCategoriesComponent } from '../../../../shared/components/article-categories/article-categories.component';
+import { ArticlesService } from '../../../../core/services/articles.service';
 
 @Component({
   selector: 'app-articles-collection',
   standalone: true,
-  imports: [RouterLink, NgIf, NgFor, RouterOutlet],
+  imports: [ArticleCategoriesComponent, RouterOutlet],
   templateUrl: './articles-collection.component.html',
   styleUrl: './articles-collection.component.scss',
 })

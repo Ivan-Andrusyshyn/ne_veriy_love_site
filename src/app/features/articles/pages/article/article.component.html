@@ -1,5 +1,5 @@
-<ng-container *ngIf="article() as art; else placeholder">
-  <article class="article">
+@if (article(); as art) {
+  <article class="article" id="article-top">
     <a [routerLink]="['/articles', category()?.slug]" class="article__back">
       ← До статей категорії «{{ category()?.title }}»
     </a>
@@ -13,8 +13,6 @@
 
     <p class="article__content">{{ art.content }}</p>
   </article>
-</ng-container>
-
-<ng-template #placeholder>
+} @else {
   <p class="article__empty">Оберіть статтю зі списку, щоб прочитати її тут.</p>
-</ng-template>
+}

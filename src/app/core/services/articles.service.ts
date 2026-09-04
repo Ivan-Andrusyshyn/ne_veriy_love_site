@@ -1,8 +1,11 @@
 import { Injectable, signal } from '@angular/core';
 
 // ==============================================
-import { ARTICLE_CATEGORIES } from '../data/articles';
-import { ArticleCategory, Article } from '../types/ArticleCategory.type';
+import { ARTICLE_CATEGORIES } from '../../features/articles/data/articles';
+import {
+  ArticleCategory,
+  Article,
+} from '../../features/articles/types/ArticleCategory.type';
 
 @Injectable({ providedIn: 'root' })
 export class ArticlesService {

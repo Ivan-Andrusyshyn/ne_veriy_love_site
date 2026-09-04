@@ -1,16 +1,15 @@
-import { CommonModule, NgIf } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 
 // ===============
-import { ArticlesService } from '../../services/articles.service';
+import { ArticlesService } from '../../../../core/services/articles.service';
 
 @Component({
   selector: 'app-article-list',
   standalone: true,
-  imports: [CommonModule, NgIf, RouterLink],
+  imports: [RouterLink],
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.scss'],
 })

@@ -1,22 +1,28 @@
-import { Component, computed, inject } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map } from 'rxjs';
-import { NgIf } from '@angular/common';
 
 // ================
-import { ArticlesService } from '../../services/articles.service';
-
+import { ArticlesService } from '../../../../core/services/articles.service';
+import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [RouterOutlet, NgIf, RouterLink],
+  imports: [RouterLink],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
 })
 export class ArticleComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly articlesService = inject(ArticlesService);
+  private readonly platformId = inject(PLATFORM_ID);
 
   private readonly categorySlug = toSignal(
     this.route.paramMap.pipe(map((params) => params.get('categorySlug') ?? '')),
@@ -41,7 +47,18 @@ export class ArticleComponent {
       this.articleSlug(),
     );
   });
+  ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
 
+    setTimeout(() => {
+      document.getElementById('article-top')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    });
+  }
   formatDate(dateIso: string): string {
     return new Date(dateIso).toLocaleDateString('uk-UA', {
       day: 'numeric',
