@@ -12,7 +12,9 @@
   display: block;
   font-family: var(--font-body);
   border-top: 1px solid var(--line);
-  padding-top: 32px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 20px 64px;
   .article-list__back {
     display: inline-block;
     font-size: 0.9rem;

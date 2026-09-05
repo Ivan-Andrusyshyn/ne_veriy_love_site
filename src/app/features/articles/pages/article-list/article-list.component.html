@@ -1,31 +1,33 @@
-@if (category(); as cat) {
-  <div class="article-list" id="article-list">
-    <a routerLink="/articles" [fragment]="cat.slug" class="article-list__back"
-      >← Усі категорії</a
-    >
+<div class="articles-page__outlet">
+  @if (category(); as cat) {
+    <div class="article-list" id="article-list">
+      <a routerLink="/articles" [fragment]="cat.slug" class="article-list__back"
+        >← Усі категорії</a
+      >
 
-    <h2 class="article-list__title">{{ cat.title }}</h2>
-    <p class="article-list__desc">{{ cat.description }}</p>
+      <h2 class="article-list__title">{{ cat.title }}</h2>
+      <p class="article-list__desc">{{ cat.description }}</p>
 
-    <div class="article-list__items">
-      @for (article of cat.articles; track $index) {
-        <a class="article-item" [routerLink]="[article.slug]">
-          <div class="article-item__media">
-            <img
-              [src]="article.imageUrl"
-              [alt]="article.title"
-              loading="lazy"
-            />
-          </div>
-          <div class="article-item__body">
-            <p class="article-item__date">{{ formatDate(article.date) }}</p>
-            <h3 class="article-item__title">{{ article.title }}</h3>
-            <p class="article-item__excerpt">{{ article.excerpt }}</p>
-          </div>
-        </a>
-      }
+      <div class="article-list__items">
+        @for (article of cat.articles; track $index) {
+          <a class="article-item" [routerLink]="[article.slug]">
+            <div class="article-item__media">
+              <img
+                [src]="article.imageUrl"
+                [alt]="article.title"
+                loading="lazy"
+              />
+            </div>
+            <div class="article-item__body">
+              <p class="article-item__date">{{ formatDate(article.date) }}</p>
+              <h3 class="article-item__title">{{ article.title }}</h3>
+              <p class="article-item__excerpt">{{ article.excerpt }}</p>
+            </div>
+          </a>
+        }
+      </div>
     </div>
-  </div>
-} @else {
-  <p class="article-list__empty">Категорію не знайдено.</p>
-}
+  } @else {
+    <p class="article-list__empty">Категорію не знайдено.</p>
+  }
+</div>

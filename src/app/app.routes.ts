@@ -21,20 +21,20 @@ export const routes: Routes = [
             (m) => m.ArticleComponent,
           ),
       },
-      {
-        path: ':categorySlug',
-        loadComponent: () =>
-          import('./features/articles/pages/article-list/article-list.component').then(
-            (m) => m.ArticleListComponent,
-          ),
-      },
-      {
-        path: ':categorySlug/:articleSlug',
-        loadComponent: () =>
-          import('./features/articles/pages/article/article.component').then(
-            (m) => m.ArticleComponent,
-          ),
-      },
     ],
+  },
+  {
+    path: 'articles/:categorySlug',
+    loadComponent: () =>
+      import('./features/articles/pages/article-list/article-list.component').then(
+        (m) => m.ArticleListComponent,
+      ),
+  },
+  {
+    path: 'articles/:categorySlug/:articleSlug',
+    loadComponent: () =>
+      import('./features/articles/pages/article/article.component').then(
+        (m) => m.ArticleComponent,
+      ),
   },
 ];
