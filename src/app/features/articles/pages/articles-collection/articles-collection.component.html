@@ -1,7 +1,10 @@
 <section class="articles-page">
   <h2 class="articles-page__title">Статті</h2>
 
-  <app-article-categories [categories]="categories()"></app-article-categories>
+  <app-article-categories
+    [categories]="categories()"
+    [isSmallCard]="true"
+  ></app-article-categories>
 
   <div class="articles-page__outlet">
     <router-outlet></router-outlet>
