@@ -1,31 +1,54 @@
 <section class="block faq" id="faq">
+  <div class="faq-author">
+    <img
+      class="faq-author__photo"
+      src="https://picsum.photos/seed/nvt-ivan/160/160"
+      [alt]="'Фото ' + authorName + ', автора блогу'"
+      width="64"
+      height="64"
+      loading="lazy"
+    />
+    <div class="faq-author__copy">
+      <p class="faq-author__name">{{ authorName }}, автор ne_veriy_tebe</p>
+      <p class="faq-author__bio">{{ authorBio }}</p>
+      <a
+        [href]="telegramLink"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="faq-author__link"
+      >
+        Перейти в телеграм
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+
   <h2 class="section-title">Питання, які нам ставлять часто</h2>
+
   <div class="faq-list">
-    <details class="faq-item" open>
-      <summary>Це блог чи заміна терапії?</summary>
-      <p>
-        Блог. Тексти допомагають зрозуміти себе, але не замінюють роботу з
-        фахівцем, якщо вона потрібна.
-      </p>
-    </details>
-    <details class="faq-item">
-      <summary>Чи можна писати авторці особисто?</summary>
-      <p>
-        Так, форма зв'язку — у футері сайту. Відповідаємо протягом кількох днів.
-      </p>
-    </details>
-    <details class="faq-item">
-      <summary>Чи є консультації офлайн?</summary>
-      <p>
-        Наразі консультації проходять онлайн, деталі — за посиланням у розділі
-        «Авторка».
-      </p>
-    </details>
-    <details class="faq-item">
-      <summary>Як часто виходять нові статті?</summary>
-      <p>
-        Нові тексти публікуються щотижня, епізоди подкасту — раз на два тижні.
-      </p>
-    </details>
+    @for (item of items; track item.question; let i = $index) {
+      <div class="faq-item" [class.is-open]="isOpen(i)">
+        <button
+          type="button"
+          class="faq-item__summary"
+          [id]="'faq-summary-' + i"
+          [attr.aria-expanded]="isOpen(i)"
+          [attr.aria-controls]="'faq-panel-' + i"
+          (click)="toggle(i)"
+        >
+          <span>{{ item.question }}</span>
+          <span class="faq-item__icon" aria-hidden="true"></span>
+        </button>
+
+        <div
+          class="faq-item__panel"
+          [id]="'faq-panel-' + i"
+          role="region"
+          [attr.aria-labelledby]="'faq-summary-' + i"
+        >
+          <p class="faq-item__answer">{{ item.answer }}</p>
+        </div>
+      </div>
+    }
   </div>
 </section>

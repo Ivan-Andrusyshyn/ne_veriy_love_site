@@ -1,0 +1,93 @@
+<section class="block community" id="спільнота">
+  <div
+    class="community-slider"
+    role="region"
+    aria-roledescription="карусель"
+    aria-label="Фото спільноти"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+    (focusin)="onFocusIn()"
+    (focusout)="onFocusOut()"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+    (keydown)="onKeydown($event)"
+  >
+    <div class="community-slider__viewport">
+      <div
+        class="community-slider__track"
+        [style.transform]="'translateX(-' + activeIndex() * 100 + '%)'"
+      >
+        @for (slide of slides; track slide.src) {
+          <div class="community-slider__slide">
+            <img
+              [src]="slide.src"
+              [alt]="slide.alt"
+              width="700"
+              height="875"
+              loading="lazy"
+            />
+          </div>
+        }
+      </div>
+    </div>
+
+    @if (slides.length > 1) {
+      <button
+        type="button"
+        class="community-slider__arrow community-slider__arrow--prev"
+        (click)="onArrowClick('prev')"
+        aria-label="Попереднє зображення"
+      >
+        ‹
+      </button>
+
+      <button
+        type="button"
+        class="community-slider__arrow community-slider__arrow--next"
+        (click)="onArrowClick('next')"
+        aria-label="Наступне зображення"
+      >
+        ›
+      </button>
+
+      <div class="community-slider__dots">
+        @for (slide of slides; track slide.src; let i = $index) {
+          <button
+            type="button"
+            class="community-slider__dot"
+            [class.is-active]="i === activeIndex()"
+            (click)="onDotClick(i)"
+            [attr.aria-label]="'Перейти до зображення ' + (i + 1)"
+          ></button>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="community-copy">
+    <p class="eyebrow-plain">Спільнота</p>
+    <h2>Підтримка не лише в статтях — а й щодня в Telegram</h2>
+    <p>
+      Короткі розбори, чесні запитання від читачів і простір, де можна написати
+      про свою ситуацію й отримати відповідь без осуду. Приєднуйся — це
+      безкоштовно.
+    </p>
+
+    <a
+      [href]="telegramLink"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn--primary btn--telegram"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M21.6 3.6 2.9 10.8c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5L18.8 6.9c.5-.3 1-.1.6.2l-8.6 7.8-.3 4.7c.4 0 .6-.2.9-.5l2.1-2 4.4 3.3c.8.5 1.4.2 1.6-.7l3-14.1c.3-1.2-.4-1.7-1.9-1z"
+        />
+      </svg>
+      Приєднатись у Telegram
+    </a>
+
+    <p class="community-note">&#64;ne_veriy_tebe · нові дописи щодня</p>
+  </div>
+</section>

@@ -1,44 +1,204 @@
-/* =========================================================
-   12. FAQ
-   ========================================================= */
+:host {
+  --bg: #faf1e6;
+  --ink: #2e211b;
+  --ink-soft: #5c4a3f;
+  --accent: #b5502f;
+  --accent-dark: #8f3c22;
+  --line: rgba(46, 33, 27, 0.14);
+  --radius: 4px;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body:
+    "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  display: block;
+  font-family: var(--font-body);
+  background: var(--bg);
+}
+
+.block {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 56px 20px;
+}
+
+/* ---------- Про автора ---------- */
+.faq-author {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-author__photo {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: sepia(0.18) saturate(1.1);
+}
+
+.faq-author__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+
+.faq-author__bio {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 10px;
+  max-width: 58ch;
+}
+
+.faq-author__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent-dark);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-dark);
+  padding-bottom: 1px;
+  width: fit-content;
+}
+
+.faq-author__link span {
+  transition: transform 0.2s ease;
+}
+.faq-author__link:hover span,
+.faq-author__link:focus-visible span {
+  transform: translateX(3px);
+}
+
+/* ---------- Заголовок ---------- */
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  color: var(--ink);
+  margin: 0 0 32px;
+}
+
+/* ---------- Список питань ---------- */
 .faq-list {
   display: flex;
   flex-direction: column;
   gap: 0;
 }
+
 .faq-item {
   border-top: 1px solid var(--line);
-  padding: 18px 0;
 }
 .faq-item:last-child {
   border-bottom: 1px solid var(--line);
 }
-.faq-item summary {
+
+.faq-item__summary {
+  width: 100%;
+  padding: 18px 4px;
+  background: none;
+  border: none;
   cursor: pointer;
+  text-align: left;
+  font-family: inherit;
   font-weight: 600;
   font-size: 1.02rem;
-  list-style: none;
+  color: var(--ink);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
 }
-.faq-item summary::-webkit-details-marker {
-  display: none;
+
+.faq-item__summary:hover {
+  color: var(--accent-dark);
 }
-.faq-item summary::after {
-  content: "+";
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  color: var(--accent);
+
+.faq-item__summary:focus-visible {
+  outline: 2px solid var(--accent-dark);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Іконка плюс/мінус, що анімується у мінус при відкритті */
+.faq-item__icon {
+  position: relative;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
-  transition: transform 0.2s ease;
 }
-.faq-item[open] summary::after {
-  content: "–";
+.faq-item__icon::before,
+.faq-item__icon::after {
+  content: "";
+  position: absolute;
+  background: var(--accent);
+  border-radius: 2px;
 }
-.faq-item p {
+.faq-item__icon::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateY(-50%);
+}
+.faq-item__icon::after {
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  transform: translateX(-50%);
+  transition: transform 0.25s ease;
+}
+.faq-item.is-open .faq-item__icon::after {
+  transform: translateX(-50%) scaleY(0);
+}
+
+/* Плавне розкриття/згортання: max-height + overflow — надійно працює
+   у всіх браузерах, на відміну від анімації grid-template-rows */
+.faq-item__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.faq-item.is-open .faq-item__panel {
+  /* з запасом під найдовшу відповідь у списку */
+  max-height: 400px;
+}
+
+.faq-item__answer {
   color: var(--ink-soft);
-  margin-top: 12px;
-  padding-right: 30px;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 30px 18px 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-item__panel,
+  .faq-item__icon::after,
+  .faq-author__link span {
+    transition: none;
+  }
+}
+
+@media (min-width: 720px) {
+  .block {
+    padding: 88px 32px;
+  }
+
+  .faq-author {
+    align-items: center;
+  }
+
+  .faq-author__photo {
+    width: 76px;
+    height: 76px;
+  }
 }
