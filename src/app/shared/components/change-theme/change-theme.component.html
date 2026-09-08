@@ -1,0 +1,36 @@
+<button
+  type="button"
+  class="theme-toggle"
+  [attr.aria-pressed]="themeService.theme() === 'dark'"
+  [attr.aria-label]="
+    themeService.theme() === 'dark'
+      ? 'Увімкнути світлу тему'
+      : 'Увімкнути темну тему'
+  "
+  (click)="themeService.toggle()"
+>
+  @if (themeService.theme() === "dark") {
+    <!-- зараз темна тема — показуємо сонце як пропозицію перейти на світлу -->
+    <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true">
+      <circle cx="12" cy="12" r="4.5" fill="currentColor" />
+      <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <line x1="12" y1="1.5" x2="12" y2="4" />
+        <line x1="12" y1="20" x2="12" y2="22.5" />
+        <line x1="1.5" y1="12" x2="4" y2="12" />
+        <line x1="20" y1="12" x2="22.5" y2="12" />
+        <line x1="4.2" y1="4.2" x2="6" y2="6" />
+        <line x1="18" y1="18" x2="19.8" y2="19.8" />
+        <line x1="4.2" y1="19.8" x2="6" y2="18" />
+        <line x1="18" y1="6" x2="19.8" y2="4.2" />
+      </g>
+    </svg>
+  } @else {
+    <!-- зараз світла тема — показуємо місяць як пропозицію перейти на темну -->
+    <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M20.5 14.7A8.5 8.5 0 0 1 9.3 3.5a9 9 0 1 0 11.2 11.2Z"
+      />
+    </svg>
+  }
+</button>

@@ -1,11 +1,24 @@
+:host {
+  display: contents;
+}
+
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(250, 241, 230, 0.92);
+  /* було: rgba(250, 241, 230, 0.92) — захардкоджений світлий колір,
+     тому в темній темі хедер лишався кремовим. color-mix бере var(--bg)
+     напряму, тож автоматично йде за темою. */
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
-  transition: box-shadow 0.25s ease;
+  transition:
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
 }
 
 .header-inner {
@@ -32,6 +45,13 @@
   }
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 120;
+}
+
 /* --- mobile nav (default = hidden panel) --- */
 .main-nav {
   position: fixed;
@@ -41,9 +61,13 @@
   background: var(--bg);
   padding: calc(var(--header-h) + 24px) 28px 28px;
   transform: translateX(100%);
-  transition: transform 0.32s ease;
-  z-index: 999;
-  box-shadow: -12px 0 30px rgba(46, 33, 27, 0.12);
+  transition:
+    transform 0.32s ease,
+    background-color 0.25s ease;
+  z-index: 110;
+  /* тінь навмисно завжди чорна — це "тінь", а не поверхня теми,
+     var(--ink) у темній темі світлий і зламав би ефект */
+  box-shadow: -12px 0 30px rgba(0, 0, 0, 0.25);
 
   &.is-open {
     transform: translateX(0);
@@ -82,7 +106,8 @@
 .nav-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(46, 33, 27, 0.35);
+  /* фіксований чорний скрім — так само незалежний від теми, як і тінь вище */
+  background: rgba(0, 0, 0, 0.4);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -105,7 +130,6 @@
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 120;
   position: relative;
 
   span {
@@ -114,19 +138,32 @@
     background: var(--ink);
     transition:
       transform 0.28s ease,
-      opacity 0.28s ease;
+      opacity 0.28s ease,
+      background-color 0.25s ease;
   }
 
   &[aria-expanded="true"] span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
-
   &[aria-expanded="true"] span:nth-child(2) {
     opacity: 0;
   }
-
   &[aria-expanded="true"] span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent-dark);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .main-nav,
+  .nav-overlay,
+  .burger span {
+    transition: none;
   }
 }
 

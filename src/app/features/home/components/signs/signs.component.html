@@ -1,49 +1,17 @@
 <section class="block signs" id="ознаки">
-  <h2 class="section-title light">Шість ознак здорової довіри</h2>
-  <ol class="signs-list">
-    <li>
-      <span class="num">01</span>
-      <div>
-        <h3>Ви можете не знати, де партнер — і не панікувати</h3>
-        <p>Тривога вщухає за хвилини, а не годинами тримає вас у напрузі.</p>
-      </div>
-    </li>
-    <li>
-      <span class="num">02</span>
-      <div>
-        <h3>Конфлікт не означає кінець</h3>
-        <p>Ви сваритесь, але жоден не хапається за думку «все, це кінець».</p>
-      </div>
-    </li>
-    <li>
-      <span class="num">03</span>
-      <div>
-        <h3>Ви ділитесь без репетиції</h3>
-        <p>Не продумуєте наперед, як сказати щось, щоб партнер не образився.</p>
-      </div>
-    </li>
-    <li>
-      <span class="num">04</span>
-      <div>
-        <h3>Мовчання не лякає</h3>
-        <p>Пауза в переписці — це просто пауза, а не сигнал тривоги.</p>
-      </div>
-    </li>
-    <li>
-      <span class="num">05</span>
-      <div>
-        <h3>Ви дозволяєте собі помилятись</h3>
-        <p>
-          Помилка не сприймається як доказ того, що ви «недостатньо хороші».
-        </p>
-      </div>
-    </li>
-    <li>
-      <span class="num">06</span>
-      <div>
-        <h3>Близькість не втомлює</h3>
-        <p>Час разом наповнює, а не виснажує постійним контролем ситуації.</p>
-      </div>
-    </li>
-  </ol>
+  <div class="signs-inner">
+    <h2 class="section-title light">Шість ознак здорової довіри</h2>
+
+    <ol class="signs-list">
+      @for (sign of signs; track sign.title; let i = $index) {
+        <li>
+          <span class="num">{{ (i + 1).toString().padStart(2, "0") }}</span>
+          <div>
+            <h3>{{ sign.title }}</h3>
+            <p>{{ sign.description }}</p>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
 </section>

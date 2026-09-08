@@ -1,11 +1,6 @@
 import { ArticleCategory } from '../types/ArticleCategory.type';
 
-/**
- * Дані категорій і статей.
- * Щоб додати нову категорію чи статтю —
- * просто додайте новий об'єкт сюди.
- */
-export const ARTICLE_CATEGORIES: ArticleCategory[] = [
+export const ARTICLE_CATEGORIES: Readonly<ArticleCategory[]> = [
   {
     slug: 'dovira-i-zrada',
     title: 'Довіра і зрада',

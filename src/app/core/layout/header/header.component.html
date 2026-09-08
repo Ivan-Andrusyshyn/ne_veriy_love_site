@@ -13,25 +13,17 @@
   <div class="header-inner">
     <a routerLink="/" class="logo"> ne_veriy_<span>tebe</span> </a>
 
+    <app-change-theme></app-change-theme>
     <nav class="main-nav" [class.is-open]="isMenuOpen()" id="mainNav">
       <ul>
-        <li>
-          <a routerLink="/" fragment="про" (click)="closeMenu()">Про проєкт</a>
-        </li>
-        <!-- <li>
-          <a routerLink="/" fragment="теми" (click)="closeMenu()">Теми</a>
-        </li>  -->
-        <li>
-          <a routerLink="/articles" fragment="статті" (click)="closeMenu()"
-            >Статті</a
-          >
-        </li>
-        <!-- <li>
-          <a routerLink="/" fragment="подкаст" (click)="closeMenu()">Подкаст</a>
-        </li> -->
-        <li>
-          <a routerLink="/" fragment="faq" (click)="closeMenu()">Питання</a>
-        </li>
+        @for (item of navList(); track $index) {
+          <li>
+            <a routerLink="/" [fragment]="item.name" (click)="closeMenu()">{{
+              item.label
+            }}</a>
+          </li>
+        }
+
         <li>
           <a
             routerLink="/"

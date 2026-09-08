@@ -3,24 +3,14 @@
   margin: 0 auto;
   padding: 56px 20px;
 }
-
+:host {
+}
 .featured {
-  --bg: #faf1e6;
-  --ink: #2e211b;
-  --ink-soft: #5c4a3f;
-  --accent-dark: #8f3c22;
-  --radius: 4px;
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body:
-    "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
-  display: block;
-  font-family: var(--font-body);
-  background: var(--bg);
-
   display: flex;
   flex-direction: column;
+  background: var(--bg);
   gap: 26px;
+  font-family: var(--font-body);
 }
 
 .featured-media img {

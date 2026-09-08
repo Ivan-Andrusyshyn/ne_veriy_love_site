@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 // ===============================
-import { ResourceCard } from '../../services/resource-cards.service';
+import { ResourceCard } from '../../../features/home/services/resource-cards.service';
 
 @Component({
   selector: 'app-resource-card',

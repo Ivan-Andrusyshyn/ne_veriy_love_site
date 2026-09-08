@@ -1,29 +1,36 @@
-/* =========================================================
-   5. SIGNS (dark warm block)
-   ========================================================= */
 .signs {
-  background: var(--bg-dark);
+  background: var(--bg);
   max-width: none;
+  transition: background-color 0.25s ease;
 }
-.signs .section-title {
+
+.signs-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.signs-inner .section-title {
   max-width: 26ch;
+}
+.section-title {
+  color: var(--ink);
 }
 .signs-list {
   display: flex;
   flex-direction: column;
   gap: 0;
-  max-width: var(--container);
-  margin: 0 auto;
 }
+
 .signs-list li {
   display: flex;
   gap: 18px;
   padding: 22px 0;
-  border-top: 1px solid var(--line-dark);
+  border-top: 1px solid var(--line);
 }
 .signs-list li:last-child {
-  border-bottom: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line);
 }
+
 .signs-list .num {
   font-family: var(--font-display);
   font-size: 1.1rem;
@@ -31,12 +38,20 @@
   flex-shrink: 0;
   padding-top: 2px;
 }
+
 .signs-list h3 {
-  color: var(--ink-on-dark);
+  color: var(--gold);
   font-size: 1.08rem;
   margin-bottom: 6px;
 }
+
 .signs-list p {
-  color: rgba(243, 231, 216, 0.72);
+  color: var(--ink-soft);
   font-size: 0.95rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signs {
+    transition: none;
+  }
 }

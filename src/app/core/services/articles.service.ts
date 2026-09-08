@@ -9,7 +9,9 @@ import {
 
 @Injectable({ providedIn: 'root' })
 export class ArticlesService {
-  private readonly _categories = signal<ArticleCategory[]>(ARTICLE_CATEGORIES);
+  private readonly _categories = signal<ArticleCategory[]>([
+    ...ARTICLE_CATEGORIES,
+  ]);
 
   readonly categories = this._categories.asReadonly();
 

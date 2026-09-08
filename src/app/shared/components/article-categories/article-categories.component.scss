@@ -1,7 +1,6 @@
 :host {
   --ink: #2e211b;
   --ink-soft: #5c4a3f;
-  --bg-alt: #f1e1ce;
   --accent: #b5502f;
   --accent-dark: #8f3c22;
   --line: rgba(46, 33, 27, 0.14);
@@ -10,7 +9,6 @@
   display: block;
 }
 
-/* ---------- Перемикач вигляду ---------- */
 .view-toggle {
   display: inline-flex;
   gap: 4px;

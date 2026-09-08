@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 
 // =============================
-import { ResourceCardComponent } from '../resource-card/resource-card.component';
+import { ResourceCardComponent } from '../../../../shared/components/resource-card/resource-card.component';
 import {
   ResourceCard,
   ResourceCardsService,

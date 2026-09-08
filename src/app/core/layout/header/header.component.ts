@@ -9,24 +9,29 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-
 import { RouterLink, RouterLinkActive } from '@angular/router';
+
+// =====
+import { NavList, navList } from '../../nav';
+import { ChangeThemeComponent } from '../../../shared/components/change-theme/change-theme.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive, ChangeThemeComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isMenuOpen = signal(false);
-
   isScrolled = signal(false);
+
   private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private desktopMediaQuery?: MediaQueryList;
   private mediaQueryListener?: (e: MediaQueryListEvent) => void;
+  navList = signal<NavList>([...navList]);
 
+  //
   ngOnInit(): void {
     if (!this.isBrowser) return;
 

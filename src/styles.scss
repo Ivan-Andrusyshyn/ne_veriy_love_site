@@ -21,14 +21,34 @@
   --radius: 4px;
 
   --header-h: 64px;
+
+  color-scheme: light;
 }
+
+:root[data-theme="dark"] {
+  --bg: #21180f;
+  --bg-alt: #2b2018;
+  --bg-dark: #140f0a;
+  --ink: #f3e7d8;
+  --ink-soft: #c9b6a5;
+  --ink-on-dark: #f3e7d8;
+  --accent: #e08a5e;
+  --accent-dark: #f2a97e;
+  --rose: #d99a90;
+  --gold: #dcb567;
+  --line: rgba(243, 231, 216, 0.14);
+  --line-dark: rgba(0, 0, 0, 0.35);
+
+  color-scheme: dark;
+}
+
 @media (min-width: 720px) {
   :root {
     --gutter: 32px;
     --header-h: 76px;
   }
 }
-/* ---------- Reset ---------- */
+
 *,
 *::before,
 *::after {
@@ -45,6 +65,9 @@ body {
   font-size: 16px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 img {
   max-width: 100%;
@@ -104,7 +127,6 @@ button {
   top: 12px;
 }
 
-/* ---------- Layout helpers ---------- */
 .block {
   padding: 56px var(--gutter);
   max-width: var(--container);
