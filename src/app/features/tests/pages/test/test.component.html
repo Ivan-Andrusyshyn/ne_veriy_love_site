@@ -1,0 +1,100 @@
+<div class="app">
+  <div class="card">
+    @if (screen() === "question") {
+      <div class="progress-wrap">
+        <div class="progress-track">
+          <div class="progress-fill" [style.width.%]="progressPercent()"></div>
+        </div>
+        <p class="progress-label">
+          Питання {{ currentIndex() + 1 }} з {{ questions.length }}
+        </p>
+      </div>
+    }
+
+    @if (screen() === "intro") {
+      <section class="screen">
+        <p class="intro-kicker">Самопізнання · 5 хвилин</p>
+        <h1>Тест на самоповагу</h1>
+        <p>
+          10 коротких тверджень про те, як ти ставишся до себе щодня — не в
+          теорії, а насправді. Чесних відповідей достатньо, ідеальних не існує.
+        </p>
+        <div class="intro-meta">
+          <span>🕐 5 хвилин</span>
+          <span>📋 10 питань</span>
+          <span>🔒 Анонімно</span>
+        </div>
+        <button class="btn-big" type="button" (click)="start()">
+          Почати тест
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M5 12h14M13 6l6 6-6 6"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </section>
+    }
+
+    @if (screen() === "question") {
+      <section class="screen">
+        <div class="q-photo">
+          <img [src]="currentImageUrl()" alt="" loading="lazy" />
+        </div>
+
+        <p class="q-text">{{ currentQuestion().text }}</p>
+
+        <div class="options">
+          @for (label of options; track label; let i = $index) {
+            <button
+              type="button"
+              class="option"
+              [class.is-selected]="isSelected(i)"
+              (click)="selectAnswer(i)"
+            >
+              <span class="option-dot"></span>
+              <span>{{ label }}</span>
+            </button>
+          }
+        </div>
+      </section>
+    }
+
+    @if (screen() === "result") {
+      <section class="screen">
+        <p class="result-kicker">Результат</p>
+
+        <div class="result-score">
+          <b>{{ score() }}</b>
+          <span>/ {{ questions.length * 4 }}</span>
+        </div>
+
+        <div class="result-gauge">
+          <div class="result-gauge-fill" [style.width.%]="gaugePercent()"></div>
+        </div>
+
+        <h2 class="result-title">{{ resultBand().title }}</h2>
+        <p class="result-text">{{ resultBand().text }}</p>
+
+        <p class="result-note">
+          Це не діагностичний інструмент і не замінює консультацію психолога.
+          Якщо тема самооцінки відгукується сильно й довго заважає жити — варто
+          поговорити з фахівцем.
+        </p>
+
+        <button class="btn-ghost" type="button" (click)="restart()">
+          ↺ Пройти ще раз
+        </button>
+      </section>
+    }
+  </div>
+</div>

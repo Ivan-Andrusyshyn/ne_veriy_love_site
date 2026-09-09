@@ -11,6 +11,7 @@ import { CheckInComponent } from './components/check-in/check-in.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { CommunityComponent } from './components/community/community.component';
+import { TestsHeroComponent } from './components/tests-hero/tests-hero.component';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,7 @@ import { CommunityComponent } from './components/community/community.component';
     ArticlesComponent,
     CommunityComponent,
     FaqComponent,
+    TestsHeroComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

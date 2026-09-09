@@ -1,0 +1,28 @@
+<a routerLink="/tests-collection" class="tests-promo">
+  <div class="tests-promo__media">
+    <img
+      src="https://picsum.photos/seed/tests-promo-cover/1000/900"
+      alt=""
+      loading="lazy"
+    />
+  </div>
+
+  <div class="tests-promo__body">
+    <p class="tests-promo__eyebrow">Психологічні тести</p>
+    <h2 class="tests-promo__title">
+      Дізнайся більше про себе за кілька хвилин
+    </h2>
+    <p class="tests-promo__lead">
+      Короткі, чесні тести без реєстрації — щоб краще розуміти свої реакції у
+      стосунках.
+    </p>
+
+    <div class="tests-promo__footer">
+      <span class="tests-promo__count">{{ countLabel() }} доступно</span>
+      <span class="tests-promo__cta" routerLink="/tests-collection">
+        Перейти до тестів
+        <span aria-hidden="true">→</span>
+      </span>
+    </div>
+  </div>
+</a>

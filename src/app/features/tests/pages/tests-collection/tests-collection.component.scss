@@ -1,0 +1,40 @@
+:host {
+  display: block;
+}
+
+.block {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 56px 20px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  color: var(--ink);
+  margin: 0 0 32px;
+}
+
+/* мобайл-фьорст: одна колонка, картки на всю ширину */
+.tests-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+@media (min-width: 640px) {
+  .tests-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .tests-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .block {
+    padding: 88px 32px;
+  }
+}

@@ -1,0 +1,9 @@
+<section class="block tests" id="тести">
+  <h2 class="section-title">Психологічні тести</h2>
+
+  <div class="tests-grid">
+    @for (test of tests(); track test.slug) {
+      <app-test-card [test]="test"></app-test-card>
+    }
+  </div>
+</section>

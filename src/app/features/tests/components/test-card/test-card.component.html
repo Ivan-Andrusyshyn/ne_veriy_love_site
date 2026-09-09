@@ -1,0 +1,21 @@
+<article class="test-card">
+  <div class="test-card__media">
+    <img [src]="test.imageUrl" [alt]="test.title" loading="lazy" />
+    <span class="test-card__badge">Тест</span>
+  </div>
+
+  <div class="test-card__body">
+    <h3 class="test-card__title">{{ test.title }}</h3>
+    <p class="test-card__desc">{{ test.description }}</p>
+
+    <div class="test-card__meta">
+      <span>🕐 {{ test.duration }}</span>
+      <span>📋 {{ test.questionsCount }} питань</span>
+    </div>
+
+    <a [routerLink]="test.route" class="test-card__cta">
+      Пройти тест
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</article>
