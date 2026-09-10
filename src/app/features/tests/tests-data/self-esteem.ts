@@ -1,6 +1,23 @@
-import { Question, ResultBand } from '../models/questions.model';
+import { Question, ResultBand, TestsData } from '../models/questions.model';
 
-export const QUESTIONS: Question[] = [
+export const testSamoocinkyDescription = {
+  kicker: 'Самопізнання · 5 хвилин',
+  title: 'Тест на самоповагу',
+  description:
+    '10 коротких тверджень про те, як ти ставишся до себе щодня — не в теорії, а насправді. Чесних відповідей достатньо, ідеальних не існує.',
+  meta: {
+    duration: '5 хвилин',
+    questions: '10 питань',
+    privacy: 'Анонімно',
+  },
+  startButton: 'Почати тест',
+  resultKicker: 'Результат',
+  resultMaxLabel: ' / ',
+  resultNote:
+    'Це не діагностичний інструмент і не замінює консультацію психолога. Якщо тема самооцінки відгукується сильно й довго заважає жити — варто поговорити з фахівцем.',
+  restartButton: '↺ Пройти ще раз',
+} as const;
+export const testSamoocinkyQuestions: Question[] = [
   {
     img: 'esteem-mirror-1',
     text: 'Я вважаю, що заслуговую на повагу так само, як і інші люди.',
@@ -53,7 +70,7 @@ export const QUESTIONS: Question[] = [
   },
 ];
 
-export const RESULT_BANDS: ResultBand[] = [
+export const testSamoocinkyResult: ResultBand[] = [
   {
     max: 19,
     title: 'Опора на себе зараз нестабільна',
@@ -70,3 +87,12 @@ export const RESULT_BANDS: ResultBand[] = [
     text: 'Ти здебільшого спираєшся на власну оцінку, а не на чужу, і вмієш бути на своєму боці навіть у складні моменти. Це не означає відсутність сумнівів — просто вони більше не визначають, як ти до себе ставишся.',
   },
 ];
+
+export const testsData: TestsData[] = [
+  {
+    testName: 'test-samoocinky',
+    questions: testSamoocinkyQuestions,
+    results: testSamoocinkyResult,
+    description: { ...testSamoocinkyDescription },
+  },
+] as const;

@@ -5,27 +5,38 @@
         <div class="progress-track">
           <div class="progress-fill" [style.width.%]="progressPercent()"></div>
         </div>
+
         <p class="progress-label">
-          Питання {{ currentIndex() + 1 }} з {{ questions.length }}
+          Питання {{ currentIndex() + 1 }} з {{ questions().length }}
         </p>
       </div>
     }
 
     @if (screen() === "intro") {
       <section class="screen">
-        <p class="intro-kicker">Самопізнання · 5 хвилин</p>
-        <h1>Тест на самоповагу</h1>
-        <p>
-          10 коротких тверджень про те, як ти ставишся до себе щодня — не в
-          теорії, а насправді. Чесних відповідей достатньо, ідеальних не існує.
+        <p class="intro-kicker">
+          {{ description()?.kicker }}
         </p>
+
+        <h1>
+          {{ description()?.title }}
+        </h1>
+
+        <p>
+          {{ description()?.description }}
+        </p>
+
         <div class="intro-meta">
-          <span>🕐 5 хвилин</span>
-          <span>📋 10 питань</span>
-          <span>🔒 Анонімно</span>
+          <span> 🕐 {{ description()?.meta?.duration }} </span>
+
+          <span> 📋 {{ description()?.meta?.questions }} </span>
+
+          <span> 🔒 {{ description()?.meta?.privacy }} </span>
         </div>
+
         <button class="btn-big" type="button" (click)="start()">
-          Почати тест
+          {{ description()?.startButton }}
+
           <svg
             width="20"
             height="20"
@@ -51,7 +62,9 @@
           <img [src]="currentImageUrl()" alt="" loading="lazy" />
         </div>
 
-        <p class="q-text">{{ currentQuestion().text }}</p>
+        <p class="q-text">
+          {{ currentQuestion().text }}
+        </p>
 
         <div class="options">
           @for (label of options; track label; let i = $index) {
@@ -71,28 +84,33 @@
 
     @if (screen() === "result") {
       <section class="screen">
-        <p class="result-kicker">Результат</p>
+        <p class="result-kicker">
+          {{ description()?.resultKicker }}
+        </p>
 
         <div class="result-score">
           <b>{{ score() }}</b>
-          <span>/ {{ questions.length * 4 }}</span>
+          <span> / {{ questions().length * 4 }} </span>
         </div>
 
         <div class="result-gauge">
           <div class="result-gauge-fill" [style.width.%]="gaugePercent()"></div>
         </div>
 
-        <h2 class="result-title">{{ resultBand().title }}</h2>
-        <p class="result-text">{{ resultBand().text }}</p>
+        <h2 class="result-title">
+          {{ resultBand().title }}
+        </h2>
+
+        <p class="result-text">
+          {{ resultBand().text }}
+        </p>
 
         <p class="result-note">
-          Це не діагностичний інструмент і не замінює консультацію психолога.
-          Якщо тема самооцінки відгукується сильно й довго заважає жити — варто
-          поговорити з фахівцем.
+          {{ description()?.resultNote }}
         </p>
 
         <button class="btn-ghost" type="button" (click)="restart()">
-          ↺ Пройти ще раз
+          {{ description()?.restartButton }}
         </button>
       </section>
     }

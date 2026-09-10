@@ -4,7 +4,6 @@ import {
   OnInit,
   OnDestroy,
   signal,
-  computed,
   inject,
   PLATFORM_ID,
 } from '@angular/core';
@@ -12,7 +11,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 // =====
-import { NavList, navList } from '../../nav';
+import { NavList, navList } from '../../data/nav';
 import { ChangeThemeComponent } from '../../../shared/components/change-theme/change-theme.component';
 
 @Component({
