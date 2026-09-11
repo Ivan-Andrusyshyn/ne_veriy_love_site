@@ -10,7 +10,7 @@ import {
   Question,
   TestDescription,
 } from '../../models/questions.model';
-import { testsData } from '../../tests-data/self-esteem';
+import { testsData } from '../../tests-data';
 
 @Component({
   selector: 'app-test',

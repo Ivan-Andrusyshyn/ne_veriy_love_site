@@ -87,12 +87,3 @@ export const testSamoocinkyResult: ResultBand[] = [
     text: 'Ти здебільшого спираєшся на власну оцінку, а не на чужу, і вмієш бути на своєму боці навіть у складні моменти. Це не означає відсутність сумнівів — просто вони більше не визначають, як ти до себе ставишся.',
   },
 ];
-
-export const testsData: TestsData[] = [
-  {
-    testName: 'test-samoocinky',
-    questions: testSamoocinkyQuestions,
-    results: testSamoocinkyResult,
-    description: { ...testSamoocinkyDescription },
-  },
-] as const;
