@@ -38,19 +38,17 @@ export class ThemeService {
 
   private resolveInitialTheme(): Theme {
     if (!this.isBrowser) {
-      return 'light';
+      return 'dark';
     }
 
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
+
       if (stored === 'light' || stored === 'dark') {
         return stored;
       }
     } catch {}
 
-    const prefersDark = window.matchMedia?.(
-      '(prefers-color-scheme: dark)',
-    ).matches;
-    return prefersDark ? 'dark' : 'light';
+    return 'dark';
   }
 }
