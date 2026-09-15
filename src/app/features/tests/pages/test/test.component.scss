@@ -145,13 +145,28 @@ h1 {
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 20px;
+  position: relative;
 }
 .q-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: sepia(0.2) saturate(1.1);
   display: block;
+  filter: sepia(0.35) saturate(0.7) brightness(0.78) contrast(1.05) blur(1.2px);
+  transform: scale(1.04);
+  transition: filter 0.4s ease;
+}
+.q-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 15, 10, 0.15) 0%,
+    rgba(20, 15, 10, 0.35) 100%
+  );
+  pointer-events: none;
+  border-radius: 12px;
 }
 .q-text {
   font-family: var(--font-display);

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 // =============================
 import { ResourceCardComponent } from '../../../../shared/components/resource-card/resource-card.component';
@@ -11,18 +12,15 @@ import {
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, ResourceCardComponent],
+  imports: [CommonModule, RouterLink, ResourceCardComponent],
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.scss'],
 })
 export class HeroComponent {
   private readonly cardsService = inject(ResourceCardsService);
 
-  /** Посилання на телеграм-канал */
   readonly telegramLink = 'https://t.me/ne_veriy_tebe';
 
-  /** Реактивний список карток — приходить із сервісу, тому нові картки
-   *  можна додавати динамічно (cardsService.add(...)) без змін у цьому компоненті */
   readonly cards = this.cardsService.cards;
 
   readonly activeIndex = signal(0);

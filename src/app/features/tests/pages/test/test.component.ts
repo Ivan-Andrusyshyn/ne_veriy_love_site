@@ -1,5 +1,6 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 
 // =
 
@@ -11,16 +12,18 @@ import {
   TestDescription,
 } from '../../models/questions.model';
 import { testsData } from '../../tests-data';
+import { TestsService } from '../../../../core/services/tests.service';
 
 @Component({
   selector: 'app-test',
   standalone: true,
-  imports: [],
+  imports: [AsyncPipe],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss',
 })
 export class TestComponent implements OnInit {
   private activeRoute = inject(ActivatedRoute);
+  testsService = inject(TestsService);
 
   readonly options = OPTIONS;
   readonly questions = signal<Question[]>([]);

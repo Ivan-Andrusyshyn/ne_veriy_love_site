@@ -1,5 +1,10 @@
 import { TestsData } from '../models/questions.model';
 import {
+  testAsociaciiDescription,
+  testAsociaciiQuestions,
+  testAsociaciiResult,
+} from './test-asociacii';
+import {
   testSamoocinkyQuestions,
   testSamoocinkyResult,
   testSamoocinkyDescription,
@@ -22,5 +27,11 @@ export const testsData: TestsData[] = [
     questions: testVnutrishniyDrugQuestions,
     results: testVnutrishniyDrugResult,
     description: { ...testVnutrishniyDrugDescription },
+  },
+  {
+    testName: 'test-asociacii',
+    description: testAsociaciiDescription,
+    questions: testAsociaciiQuestions,
+    results: testAsociaciiResult,
   },
 ] as const;
