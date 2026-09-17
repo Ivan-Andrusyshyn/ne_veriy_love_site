@@ -3,6 +3,20 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
+    path: 'courses-collection',
+    loadComponent: () =>
+      import('./features/curses/pages/courses-collection/courses-collection.component').then(
+        (c) => c.CoursesCollectionComponent,
+      ),
+  },
+  {
+    path: 'courses-collection/:courseName',
+    loadComponent: () =>
+      import('./features/curses/pages/course/course.component').then(
+        (c) => c.CourseComponent,
+      ),
+  },
+  {
     path: 'home',
     loadComponent: () =>
       import('./features/home/home.component').then((m) => m.HomeComponent),

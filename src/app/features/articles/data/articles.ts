@@ -1,4 +1,4 @@
-import { ArticleCategory } from '../types/ArticleCategory.type';
+import { ArticleCategory } from '../models/ArticleCategory.type';
 
 export const ARTICLE_CATEGORIES: Readonly<ArticleCategory[]> = [
   {

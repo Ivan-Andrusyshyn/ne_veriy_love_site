@@ -5,7 +5,7 @@ import { ARTICLE_CATEGORIES } from '../../features/articles/data/articles';
 import {
   ArticleCategory,
   Article,
-} from '../../features/articles/types/ArticleCategory.type';
+} from '../../features/articles/models/ArticleCategory.type';
 
 @Injectable({ providedIn: 'root' })
 export class ArticlesService {

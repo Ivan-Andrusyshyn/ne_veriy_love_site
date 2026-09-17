@@ -1,0 +1,88 @@
+@if (course(); as c) {
+  <div class="roadmap">
+    <header class="roadmap-header">
+      <p class="roadmap-header__kicker">{{ c.kicker }}</p>
+      <h1>{{ c.title }}</h1>
+      <p>{{ c.description }}</p>
+
+      <div class="roadmap-progress">
+        <div class="roadmap-progress__track">
+          <div
+            class="roadmap-progress__fill"
+            [style.width.%]="totals().percent"
+          ></div>
+        </div>
+        <p class="roadmap-progress__label">
+          {{ totals().completed }} з {{ totals().total }} уроків пройдено
+        </p>
+      </div>
+    </header>
+
+    @for (section of sections(); track section.id) {
+      <section class="section-block">
+        <div class="section-block__header">
+          <h2>{{ section.title }}</h2>
+          <p>{{ section.description }}</p>
+          <span class="section-block__count">
+            {{ section.completedCount }} / {{ section.totalCount }}
+          </span>
+        </div>
+
+        <div class="path">
+          @for (lesson of section.lessons; track lesson.id) {
+            <div class="path-item" [class]="sideClass(lesson.globalIndex)">
+              <button
+                type="button"
+                class="node"
+                [class.is-locked]="lesson.status === 'locked'"
+                [class.is-available]="lesson.status === 'available'"
+                [class.is-completed]="lesson.status === 'completed'"
+                [attr.aria-expanded]="expandedLessonId() === lesson.id"
+                [attr.aria-disabled]="lesson.status === 'locked'"
+                (click)="toggleLesson(lesson.id, lesson.status)"
+              >
+                <span class="node__icon">
+                  @if (lesson.status === "locked") {
+                    🔒
+                  } @else if (lesson.status === "completed") {
+                    ✓
+                  } @else {
+                    {{ lesson.icon }}
+                  }
+                </span>
+              </button>
+              <p class="node-title">{{ lesson.title }}</p>
+
+              @if (expandedLessonId() === lesson.id) {
+                <div class="lesson-card">
+                  <p class="lesson-card__meta">
+                    Урок {{ lesson.positionInSection }} ·
+                    {{ lesson.durationMinutes }} хв
+                  </p>
+                  <p class="lesson-card__summary">{{ lesson.summary }}</p>
+                  <p class="lesson-card__content">{{ lesson.content }}</p>
+                  <button
+                    type="button"
+                    class="lesson-card__btn"
+                    [class.is-done]="lesson.status === 'completed'"
+                    (click)="markComplete(lesson.id, $event)"
+                  >
+                    @if (lesson.status === "completed") {
+                      ✓ Пройдено
+                    } @else {
+                      Позначити пройденим
+                    }
+                  </button>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </section>
+    }
+  </div>
+} @else {
+  <div class="roadmap">
+    <p class="not-found">Такого курсу не знайдено.</p>
+  </div>
+}

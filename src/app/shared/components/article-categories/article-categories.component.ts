@@ -9,7 +9,7 @@ import {
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 //
-import { ArticleCategory } from '../../../features/articles/types/ArticleCategory.type';
+import { ArticleCategory } from '../../../features/articles/models/ArticleCategory.type';
 import { isPlatformBrowser } from '@angular/common';
 
 type ViewMode = 'grid' | 'list';

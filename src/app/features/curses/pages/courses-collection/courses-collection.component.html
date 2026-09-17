@@ -1,0 +1,48 @@
+<section class="block tests" id="тести">
+  <h2 class="section-title">Курси</h2>
+
+  @for (course of courses(); track course.id) {
+    <a [routerLink]="['/courses-collection', course.id]" class="course-card">
+      <p class="course-card__kicker">{{ course.kicker }}</p>
+
+      <h3 class="course-card__title">{{ course.title }}</h3>
+
+      <p class="course-card__text">{{ course.description }}</p>
+
+      <div class="course-card__preview">
+        @for (lesson of course.previewLessons; track lesson.id) {
+          <span
+            class="preview-dot"
+            [class.is-completed]="lesson.status === 'completed'"
+            [class.is-locked]="lesson.status === 'locked'"
+          >
+            {{ lesson.icon }}
+          </span>
+        }
+      </div>
+
+      <div class="course-card__meta">
+        <span>📚 {{ course.sections.length }} розділи</span>
+        <span>📋 {{ course.totals.total }} уроків</span>
+        <span>🕐 ~{{ course.totalMinutes }} хв</span>
+      </div>
+
+      @if (course.totals.hasStarted) {
+        <div class="course-card__progress">
+          <div class="course-card__progress-track">
+            <div
+              class="course-card__progress-fill"
+              [style.width.%]="course.totals.percent"
+            ></div>
+          </div>
+          <span>{{ course.totals.completed }} / {{ course.totals.total }}</span>
+        </div>
+      }
+
+      <span class="course-card__cta">
+        {{ course.ctaLabel }}
+        <span aria-hidden="true">→</span>
+      </span>
+    </a>
+  }
+</section>
