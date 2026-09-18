@@ -9,10 +9,23 @@
   padding: 32px 16px 64px;
 }
 
+.not-found {
+  color: var(--ink-soft);
+  text-align: center;
+  padding: 60px 0;
+}
+
 /* ---------- header ---------- */
 .roadmap-header {
   text-align: center;
   margin-bottom: 36px;
+}
+.roadmap-header__kicker {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent-dark);
+  font-size: 0.9rem;
+  margin: 0 0 6px;
 }
 .roadmap-header h1 {
   font-family: var(--font-display);
@@ -82,7 +95,6 @@
   flex-direction: column;
   gap: 34px;
 }
-/* вертикальна лінія-стежка позаду вузлів */
 .path::before {
   content: "";
   position: absolute;
@@ -108,8 +120,6 @@
   align-items: center;
   text-align: center;
 }
-
-/* зсуви вузлів вбік для ефекту звивистої стежки, як у Duolingo */
 .path-item.side-left {
   align-items: flex-start;
   margin-right: auto;
@@ -154,7 +164,6 @@
   outline: 3px solid var(--gold);
   outline-offset: 3px;
 }
-
 .node.is-locked {
   cursor: not-allowed;
   opacity: 0.55;
@@ -191,23 +200,72 @@
   color: var(--ink);
   max-width: 140px;
 }
+.lesson-screen__nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
 
-/* ---------- lesson card ---------- */
-.lesson-card {
-  margin-top: 14px;
-  width: 100%;
-  max-width: 320px;
-  background: var(--bg-alt);
+  padding: 1rem 0;
+}
+
+.lesson-screen__nav-btn {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 999px;
   border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 16px 18px;
-  text-align: left;
+  background: transparent;
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.lesson-screen__nav-btn:hover:not(:disabled) {
+  border-color: var(--ink-soft);
+  color: var(--ink);
+}
+
+.lesson-screen__nav-btn:focus-visible {
+  outline: 2px solid var(--accent-dark);
+  outline-offset: 3px;
+}
+
+.lesson-screen__nav-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.lesson-screen__nav-btn.is-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+}
+
+.lesson-screen__nav-btn.is-primary:hover:not(:disabled) {
+  background: var(--accent-dark);
+  color: #fff;
+}
+
+.lesson-screen__nav-btn.is-primary:disabled {
+  background: var(--gold);
+  opacity: 0.9;
+  cursor: default;
+}
+/* ---------- повноекранний урок ---------- */
+.lesson-screen {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
   animation: fade-in 0.25s ease;
 }
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -215,49 +273,114 @@
   }
 }
 
-.lesson-card__meta {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.82rem;
+.lesson-screen__exit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
   color: var(--accent-dark);
-  margin: 0 0 8px;
-}
-.lesson-card__summary {
-  font-weight: 700;
-  font-size: 0.92rem;
-  color: var(--ink);
-  margin: 0 0 8px;
-}
-.lesson-card__content {
+  font-weight: 600;
   font-size: 0.9rem;
-  line-height: 1.55;
-  color: var(--ink-soft);
-  margin: 0 0 16px;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 24px;
+}
+.lesson-screen__exit:focus-visible {
+  outline: 2px solid var(--accent-dark);
+  outline-offset: 3px;
 }
 
-.lesson-card__btn {
+.lesson-screen__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 18px;
+}
+
+.lesson-screen__meta {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--accent-dark);
+  margin: 0 0 10px;
+}
+
+.lesson-screen__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 6vw, 1.8rem);
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+
+.lesson-screen__summary {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.lesson-screen__content {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0 0 32px;
+}
+
+.lesson-screen__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lesson-screen__finish {
   width: 100%;
-  padding: 10px 16px;
+  padding: 16px 20px;
   border-radius: 999px;
   border: none;
   background: var(--accent);
   color: #fff;
   font-weight: 700;
-  font-size: 0.86rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-.lesson-card__btn:hover {
+.lesson-screen__finish:hover:not(:disabled) {
   background: var(--accent-dark);
 }
-.lesson-card__btn.is-done {
+.lesson-screen__finish:disabled {
   background: var(--gold);
+  cursor: default;
+  opacity: 0.9;
+}
+
+.lesson-screen__exit-secondary {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+.lesson-screen__exit-secondary:hover {
+  border-color: var(--ink-soft);
+  color: var(--ink);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .node,
   .roadmap-progress__fill,
-  .lesson-card {
+  .lesson-screen {
     transition: none;
     animation: none;
   }
@@ -266,6 +389,9 @@
 @media (min-width: 640px) {
   .roadmap {
     padding: 56px 24px 88px;
+  }
+  .lesson-screen {
+    padding: 48px 24px 64px;
   }
   .node {
     width: 72px;

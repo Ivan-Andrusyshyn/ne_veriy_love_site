@@ -6,12 +6,14 @@
  */
 
 export type LessonStatus = 'locked' | 'available' | 'completed';
-
+export interface LessonCard {
+  readonly text: string;
+}
 export interface CourseLesson {
   readonly id: string;
   readonly title: string;
   readonly summary: string;
-  readonly content: string;
+  readonly content: readonly LessonCard[];
   readonly icon: string;
   readonly durationMinutes: number;
 }
