@@ -12,6 +12,7 @@ import { FaqComponent } from './components/faq/faq.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { CommunityComponent } from './components/community/community.component';
 import { TestsHeroComponent } from './components/tests-hero/tests-hero.component';
+import { MyCoursesComponent } from './components/my-courses/my-courses.component';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +28,7 @@ import { TestsHeroComponent } from './components/tests-hero/tests-hero.component
     CommunityComponent,
     FaqComponent,
     TestsHeroComponent,
+    MyCoursesComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
