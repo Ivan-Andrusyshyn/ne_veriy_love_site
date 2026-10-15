@@ -137,7 +137,12 @@
 .path-item.side-center {
   width: 100%;
 }
-
+.node-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 .node {
   width: 64px;
   height: 64px;

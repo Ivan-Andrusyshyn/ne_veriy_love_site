@@ -109,26 +109,28 @@
           <div class="path">
             @for (lesson of section.lessons; track lesson.id) {
               <div class="path-item" [class]="sideClass(lesson.globalIndex)">
-                <button
-                  type="button"
-                  class="node"
-                  [class.is-locked]="lesson.status === 'locked'"
-                  [class.is-available]="lesson.status === 'available'"
-                  [class.is-completed]="lesson.status === 'completed'"
-                  [attr.aria-disabled]="lesson.status === 'locked'"
-                  (click)="openLesson(lesson.id, lesson.status)"
-                >
-                  <span class="node__icon">
-                    @if (lesson.status === "locked") {
-                      🔒
-                    } @else if (lesson.status === "completed") {
-                      ✓
-                    } @else {
-                      {{ lesson.icon }}
-                    }
-                  </span>
-                </button>
-                <p class="node-title">{{ lesson.title }}</p>
+                <div class="node-wrapper">
+                  <button
+                    type="button"
+                    class="node"
+                    [class.is-locked]="lesson.status === 'locked'"
+                    [class.is-available]="lesson.status === 'available'"
+                    [class.is-completed]="lesson.status === 'completed'"
+                    [attr.aria-disabled]="lesson.status === 'locked'"
+                    (click)="openLesson(lesson.id, lesson.status)"
+                  >
+                    <span class="node__icon">
+                      @if (lesson.status === "locked") {
+                        🔒
+                      } @else if (lesson.status === "completed") {
+                        ✓
+                      } @else {
+                        {{ lesson.icon }}
+                      }
+                    </span>
+                  </button>
+                  <p class="node-title">{{ lesson.title }}</p>
+                </div>
               </div>
             }
           </div>
